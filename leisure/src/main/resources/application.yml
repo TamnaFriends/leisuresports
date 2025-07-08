@@ -1,19 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:13306/tamnauser_sign_info?useUnicode=true&characterEncoding=utf8mb4
-    username: root
+    url: jdbc:mysql://localhost:3306/leisure_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
+    username: leisure_user
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
-  redis:
-    host: localhost
-    port: 6379
   jpa:
     hibernate:
-      ddl-auto: update  # 개발 시, 운영땐 validate/none
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-
-server:
-  port: 8080

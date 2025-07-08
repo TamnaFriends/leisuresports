@@ -1,21 +1,24 @@
-version: "3"
 services:
-  mysql:
+  mysql-main:
     image: mysql:8
     container_name: mysql-main
     ports:
-      - "13306:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: tamnauser_sign_info
+      MYSQL_DATABASE: leisure_db
+      MYSQL_USER: leisure_user
+      MYSQL_PASSWORD: 1234
     command:
       --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     volumes:
       - ./mysql-data:/var/lib/mysql
-  redis:
+
+  redis-main:
     image: redis:7
     container_name: redis-main
     ports:
       - "6379:6379"
     volumes:
       - ./redis-data:/data
+      - ./initdb:/docker-entrypoint-initdb.d
